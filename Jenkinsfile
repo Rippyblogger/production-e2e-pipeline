@@ -13,13 +13,12 @@ pipeline  {
                 cleanWs()
             }
         }
-    }
 
-    stages{
         stage("Checkout Code") {
             steps {
-                git branch: 'main', credentialsId: 'github', url:'git@github.com:Rippyblogger/production-e2e-pipeline.git'
+                git branch: 'main', credentialsId: 'github', url:'https://github.com/Rippyblogger/production-e2e-pipeline'
             }
         }
+
     }
 }
