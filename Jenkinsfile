@@ -59,7 +59,7 @@ pipeline  {
         stage("Build and push Docker image"){
             steps{
                     script{
-                        docker.withRegistry('', credentialsId: 'dockerhub'){
+                        docker.withRegistry('', 'dockerhub'){
                         docker_image = docker.build "${IMAGE_NAME}"
                         docker_image.push("${IMAGE_TAG}")
                     }
