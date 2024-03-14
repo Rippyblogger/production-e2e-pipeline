@@ -12,6 +12,7 @@ pipeline  {
         APP_NAME = "production-e2e-pipeline"
         RELEASE = "1.0.0"
         DOCKER_USER = "popeschmidt"
+        DOCKER_PASS = credentials('dockerhub')
         IMAGE_NAME = "${DOCKER_USER}" + "/" +"${APP_NAME}"
         IMAGE_TAG = "${RELEASE}" + "-"+ "${env.BUILD_NUMBER}"
     }
@@ -59,7 +60,7 @@ pipeline  {
         stage("Build and push Docker image"){
             steps{
                     script{
-                        docker.withRegistry('', 'dockerhub'){
+                        docker.withRegistry('', "${DOCKER_PASS}"){
                         docker_image = docker.build "${IMAGE_NAME}"
                         docker_image.push("${IMAGE_TAG}")
                     }
