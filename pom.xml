@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
+		<artifactId>production-e2e-pipeline</artifactId>
 		<version>3.0.4</version>
-		<!-- <relativePath/> lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dmancloud.dinesh</groupId>
 	<artifactId>demoapp</artifactId>
