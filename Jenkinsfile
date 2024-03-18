@@ -14,6 +14,7 @@ pipeline  {
         DOCKER_USER = "popeschmidt"
         IMAGE_NAME = "${DOCKER_USER}" + "/" +"${APP_NAME}"
         IMAGE_TAG = "${RELEASE}" + "-"+ "${env.BUILD_NUMBER}"
+        JENKINS_API_TOKEN = "${JENKINS_API_TOKEN}"
     }
 
     stages {
@@ -67,6 +68,14 @@ pipeline  {
                 }
             }
 
+        }
+
+        stage("Update CD pipeline"){
+            steps{
+                script{
+                    sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'http://10.211.55.90:8080/job/gitops-complete-pipeline/buildWithParameters?token=gitops-token'"
+                }
+            }
         }
 
     }
