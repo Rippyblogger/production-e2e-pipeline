@@ -85,7 +85,7 @@ pipeline  {
             def jenkinsApiToken = env.JENKINS_API_TOKEN  
             
             sh """
-            curl -v -k --user ${jenkinsApiToken} -X POST \\
+            curl -v -k --user boye:${jenkinsApiToken} -X POST \\
                  -H 'cache-control: no-cache' \\
                  -H 'content-type: application/x-www-form-urlencoded' \\
                  --data 'IMAGE_TAG=${IMAGE_TAG}' \\
