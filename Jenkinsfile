@@ -82,7 +82,7 @@ pipeline  {
         stage("Update CD pipeline") {
     steps {
         script {
-            def jenkinsApiToken = credentials(JENKINS_API_TOKEN)
+            def jenkinsApiToken = credentials("JENKINS_API_TOKEN")
             def apiToken = jenkinsApiToken.getSecret()  
             
             sh """
