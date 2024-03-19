@@ -83,10 +83,9 @@ pipeline  {
     steps {
         script {
             def jenkinsApiToken = credentials("JENKINS_API_TOKEN")
-            def apiToken = jenkinsApiToken.getSecret()  
             
             sh """
-            curl -v -k --user boye:${apiToken} -X POST \\
+            curl -v -k --user boye:${jenkinsApiToken} -X POST \\
                  -H 'cache-control: no-cache' \\
                  -H 'content-type: application/x-www-form-urlencoded' \\
                  --data 'IMAGE_TAG=${IMAGE_TAG}' \\
